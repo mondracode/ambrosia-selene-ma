@@ -16,6 +16,7 @@ const Home: React.FC<
 
       <View style={styles.container}>
         <Text style={styles.textTitle}>Acciones rápidas</Text>
+        <Text style={styles.textSection}>Y por acá también</Text>
       </View>
     </>
   );
