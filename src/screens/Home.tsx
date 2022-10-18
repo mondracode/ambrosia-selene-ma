@@ -1,14 +1,10 @@
-import React, {PropsWithChildren} from 'react';
+import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import tw from 'twrnc';
 
-const Home: React.FC<
-  PropsWithChildren<{
-    name: string;
-  }>
-> = () => {
+const Home = () => {
   return (
-    <>
+    <View>
       <View style={styles.container}>
         <Text style={styles.textTitle}>¡Hola, Pepito!</Text>
         <Text style={styles.textSection}>Por acá debemos traer info</Text>
@@ -18,7 +14,7 @@ const Home: React.FC<
         <Text style={styles.textTitle}>Acciones rápidas</Text>
         <Text style={styles.textSection}>Y por acá también</Text>
       </View>
-    </>
+    </View>
   );
 };
 

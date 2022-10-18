@@ -1,28 +1,67 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, StatusBar, StyleSheet} from 'react-native';
+import {StatusBar} from 'react-native';
 
 import Home from './src/screens/Home';
-import Navbar from './src/components/Navbar';
-import tw from 'twrnc';
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Registry from './src/screens/Registry';
+import Plan from './src/screens/Plan';
+import Courses from './src/screens/Courses';
+import Menu from './src/screens/Menu';
+import RemixIcon from 'react-native-remix-icon';
+
+const Tab = createBottomTabNavigator();
 
 const App = () => {
   return (
-    <SafeAreaView>
+    <>
       <StatusBar barStyle="dark-content" />
-
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={styles.mainView}>
-        <Home name={'aaa'} />
-      </ScrollView>
-
-      <Navbar />
-    </SafeAreaView>
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={({route}) => ({
+            tabBarIcon: ({color}) => {
+              return (
+                <RemixIcon
+                  name={getPageIcon(route.name)}
+                  size={24}
+                  color={color}
+                />
+              );
+            },
+            tabBarActiveTintColor: 'black',
+            tabBarInactiveTintColor: 'gray',
+          })}>
+          <Tab.Screen name="Pendientes" component={Plan} />
+          <Tab.Screen name="Historia" component={Registry} />
+          <Tab.Screen name="Home" component={Home} />
+          <Tab.Screen name="Cursos" component={Courses} />
+          <Tab.Screen name="Menú" component={Menu} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </>
   );
 };
 
-const styles = StyleSheet.create({
-  mainView: tw`h-[93%]`,
-});
+const getPageIcon = (pageName: string): string => {
+  let pageIcon = '';
+  switch (pageName) {
+    case 'Pendientes':
+      pageIcon = 'ri-checkbox-multiple-line';
+      break;
+    case 'Historia':
+      pageIcon = 'ri-book-2-line';
+      break;
+    case 'Home':
+      pageIcon = 'ri-home-3-fill';
+      break;
+    case 'Cursos':
+      pageIcon = 'ri-booklet-line';
+      break;
+    case 'Menú':
+      pageIcon = 'ri-menu-5-line';
+      break;
+  }
+  return pageIcon;
+};
 
 export default App;
