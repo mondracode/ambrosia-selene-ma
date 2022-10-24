@@ -28,8 +28,8 @@ const App = () => {
                 />
               );
             },
-            tabBarActiveTintColor: 'black',
-            tabBarInactiveTintColor: 'gray',
+            tabBarActiveTintColor: '#1c9888',
+            tabBarInactiveTintColor: '#b9b9b9',
           })}>
           <Tab.Screen name="Pendientes" component={Plan} />
           <Tab.Screen name="Historia" component={Registry} />
