@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
+import {filterAuth} from '../api/atlas';
 
-interface IAuth {
+export interface IAuth {
   token?: string;
   username?: string;
   name?: string;
@@ -23,7 +24,7 @@ const AuthProvider = ({children}) => {
   });
 
   const saveAuth = (newAuth: IAuth) => {
-    setAuth(newAuth);
+    setAuth(filterAuth(newAuth));
   };
 
   const getAuth = (): IAuth => {

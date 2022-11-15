@@ -1,8 +1,6 @@
 import React, {useContext} from 'react';
 import RemixIcon from 'react-native-remix-icon';
-import Plan from '../screens/Plan';
 import Registry from '../screens/Registry';
-import Home from '../screens/Home';
 import Courses from '../screens/Courses';
 import Menu from '../screens/Menu';
 import Login from '../screens/Login';
@@ -33,10 +31,8 @@ const TabNavigation = () => {
         })}>
         {auth.token ? (
           <>
-            <Tab.Screen name="Pendientes" component={Plan} />
             <Tab.Screen name="Historia" component={Registry} />
-            <Tab.Screen name="Home" component={Home} />
-            <Tab.Screen name="Cursos" component={Courses} />
+            <Tab.Screen name="Horario" component={Courses} />
             <Tab.Screen
               name="Menú"
               children={props => (
@@ -58,16 +54,10 @@ const TabNavigation = () => {
 const getPageIcon = (pageName: string): string => {
   let pageIcon = '';
   switch (pageName) {
-    case 'Pendientes':
-      pageIcon = 'ri-checkbox-multiple-line';
-      break;
     case 'Historia':
       pageIcon = 'ri-book-2-line';
       break;
-    case 'Home':
-      pageIcon = 'ri-home-3-fill';
-      break;
-    case 'Cursos':
+    case 'Horario':
       pageIcon = 'ri-booklet-line';
       break;
     case 'Menú':
